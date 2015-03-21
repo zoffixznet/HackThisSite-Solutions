@@ -5,33 +5,36 @@ use warnings;
 use 5.020;
 
 my @scrambled = qw/
-    odrcoalo
-    mnataon
-    caparkd
-    hteizn
-    rferee
-    benadr
-    ndaaac
-    stwameeb
-    kexleen
-    a1ahpl
+wprsoas
+
+edwrda
+
+salroi
+
+liuacbmo
+
+rmiswme
+
+iearnm
+
+tjnius
+
+e31st2t
+
+etters
+
+lpaclemb
 /;
 
 open my $fh, '<', 'wordlist.txt' or die $!;
 my %key;
 for ( <$fh> ) {
-    chomp;
-    # s/\W//g;
-    say;
+    s/\r\n//g;
     $key{ join '', sort split // } = $_;
 }
 
-use Data::Dumper;
-die Dumper \%key;
-
 my @answers;
-for ( @scrambled ) {
-    push @answers, $key{ join '', sort split // };
-}
+push @answers, $key{ join '', sort split // }
+    for @scrambled;
 
 say join ',', @answers;
